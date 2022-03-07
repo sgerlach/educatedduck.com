@@ -1,0 +1,60 @@
+{
+  "name": "EducatedDuck",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Website for educated ducks",
+  "author": "sgerlach",
+  "license": "NONE",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "source": "src/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgerlach/educatedduck"
+  },
+  "bugs": {
+    "url": "https://github.com/sgerlach/educatedduck/issues"
+  },
+  "homepage": "https://educatedduck.com",
+  "scripts": {
+    "css-compile": "node-sass --include-path node_modules --output-style compressed --source-map true --source-map-contents true --precision 6 scss -o assets/css/",
+    "css-lint": "stylelint scss/",
+    "css-prefix": "postcss --replace assets/css/starter.css --use autoprefixer --map",
+    "css-purge": "purgecss --keyframes --css assets/css/starter.css --content src/index.html \"node_modules/bootstrap/js/dist/{util,modal}.js\" --output assets/css/",
+    "css": "npm-run-all css-compile css-prefix",
+    "server": "serve --listen 3000",
+    "start": "parcel",
+    "watch": "nodemon -e html,scss -x \"npm run css\"",
+    "test": "npm run css-lint && npm run css",
+    "dev": "parcel ./src/index.html",
+    "prebuild": "npx rimraf build",
+    "build": "parcel build --public-url ./ ./src/index.html  --dist-dir build"
+  },
+  "keywords": [
+    "bootstrap",
+    "sass",
+    "css",
+    "javascript",
+    "starter",
+    "template"
+  ],
+  "dependencies": {
+    "@popperjs/core": "^2.11.2",
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.3.2",
+    "autoprefixer": "^10.2.5",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "parcel": "latest",
+    "postcss": "^8.2.10",
+    "postcss-cli": "^8.3.1",
+    "purgecss": "^4.0.2",
+    "serve": "^11.3.2",
+    "stylelint": "^13.12.0",
+    "stylelint-config-twbs-bootstrap": "^2.1.0"
+  }
+}
